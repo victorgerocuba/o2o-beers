@@ -27,7 +27,7 @@ class BeerController extends AbstractController
     }
 
     /**
-     * @Route("/beers/{beer_id}", name="beer_list", methods={"GET"}, requirements={"page"="\d+"})
+     * @Route("/beers/{beer_id}", name="beer_detail", methods={"GET"}, requirements={"page"="\d+"})
      */
     public function getBeer(int $beer_id, BeerRepository $beer_repository) : JsonResponse
     {	
