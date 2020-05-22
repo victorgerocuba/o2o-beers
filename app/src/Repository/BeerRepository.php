@@ -47,9 +47,14 @@ class BeerRepository
 		foreach ($response as $beer) {
 			// array_flip convert key on values and values on key
 			// array_intersect_key return an array wich the keys exist on all arrays
-			$processed_response[] = array_intersect_key($beer, array_flip($fields));
+			$processed_response[] = $this->removeFields($fields, $beer);
 		}
 
 		return $processed_response;
+	}
+
+	private function removeFields(array $fields, array $base_array)
+	{
+		return array_intersect_key($base_array, array_flip($fields));
 	}
 }
