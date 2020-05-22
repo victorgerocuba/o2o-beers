@@ -8,12 +8,12 @@ class BeerRepository
 {
 	private $client;
 	private $response;
-	private const API_BEER_RESOURCE_URL = "https://api.punkapi.com/v2/beers";
+	private const API_BEER_RESOURCE_URL = "https://api.punkapi.com/v2/beers/";
 
-	private function executeRequest(array $filters = [])
+	private function executeRequest(string $url, array $filters = [])
 	{
 		$this->client = HttpClient::create();
-		$this->response = $this->client->request('GET', self::API_BEER_RESOURCE_URL,[
+		$this->response = $this->client->request('GET', $url,[
 			'query' => $filters,
 		]);
 	}
@@ -25,8 +25,15 @@ class BeerRepository
 
 	public function get(array $fields = [], array $filters = []) : Array
 	{
-		$this->executeRequest($filters);
+		$this->executeRequest(self::API_BEER_RESOURCE_URL, $filters);
 		return $this->getProcessedResponse($fields);
+	}
+
+	public function getByPk(int $beer_id, array $fields = []) : Array
+	{
+		// TODO: make method for build URL
+		$this->executeRequest(self::API_BEER_RESOURCE_URL . $beer_id);
+		return $this->getProcessedResponse($fields)[0];// ins´t a list is a single json object
 	}
 
 	private function getProcessedResponse($fields) : Array
