@@ -1,4 +1,4 @@
-# Prueba técnica para Walmeric
+# Prueba técnica para O2O
 
 ## 1. Stack técnologico
 
@@ -6,11 +6,9 @@ Hemos realizado la prueba con el siguiente stack
 
 - Docker Compose
 - Php 7.4
-- Symfony 4.4
-- MySql
-- Nginx (aunque al final no le hemos dado utilidad)
+- Symfony 5
+- Nginx (se puede ver en el localhost 127.0.0.1:8080)
 
-Hemos montado todo esto en un entorno dockerizado, aunque Nginx esta 100% operativo, al final optamos por la opción de que para la busqueda de caracterisicticas por valores se realice desde consola.
 
 ## 2. Docker compose
 
